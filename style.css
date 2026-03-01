@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff; /* Dark background color */
+    color: #000000; /* Light text color */
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212; /* Dark background color */
+        color: #ffffff; /* Light text color */
+    }
+}
+
+#run-action-button {
+  /* Default styles */
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  
+}
+
+/* Button state classes */
+.not-connected {
+    background: #D12025; /* Red background when not connected to Streamer.bot*/
+    color: white;
+}
+
+.connected {
+    cursor: pointer; /* Pointer cursor for clickable button */
+    /* Styles when connected to Streamer.bot */
+    @media (prefers-color-scheme: dark) {
+        background-color: #383838;
+        color: #ffffff;
+      }
+}

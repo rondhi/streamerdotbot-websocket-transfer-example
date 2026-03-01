@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+      <TargetFramework>net481</TargetFramework>
+      <LangVersion>13.0</LangVersion>
+      <Nullable>enable</Nullable>
+      <UseWPF>true</UseWPF>
+      <DefineConstants>DEBUG;NOT_STREAMERBOT;EXTERNAL_EDITOR</DefineConstants>
+      <NoWarn>CS0114</NoWarn>
+      <!-- Windows Path -->
+      <!-- <StreamerBotPath Condition="'$(OS)' == 'Windows_NT'">D:\overlays\streamerbot</StreamerBotPath> -->
+      <StreamerBotPath Condition="'$(OS)' == 'Windows_NT'">D:\overlays\streamerbot</StreamerBotPath>
+      <!-- Linux Path -->
+      <StreamerBotPath Condition="'$(OS)' != 'Windows_NT'">/home/rondhi/.local/lib/streamer.bot</StreamerBotPath>
+
+   </PropertyGroup>
+   <ItemGroup>
+       <!-- Automatically include in every CS file -->
+      <Using Include="Streamer.bot.Plugin.Interface" />
+      <Using Include="Streamer.bot.Plugin.Interface.Model" />
+      <Using Include="Streamer.bot.Plugin.Interface.Enums" />
+      <Using Include="Streamer.bot.Common.Events" />
+
+      <!-- Include all DLLs in a specific directory in the build output -->
+      <Reference Include="System.Windows.Forms" />
+      <Reference Include="System.Web" />
+      <Reference Include="System.Net.Http" />
+
+      <!-- Use forward slashes for cross-platform compatibility -->
+      <Reference Include="$(StreamerBotPath)/Streamer.bot.Plugin.Interface.dll" />
+      <Reference Include="$(StreamerBotPath)/Streamer.bot.Common.dll" />
+      <Reference Include="$(StreamerBotPath)/Twitch.Common.dll" />
+      <Reference Include="$(StreamerBotPath)/NAudio*.dll" />
+      <Reference Include="$(StreamerBotPath)/Wpf*.dll" />
+      <Reference Include="$(StreamerBotPath)/Newtonsoft.Json.dll" />
+      <Reference Include="$(StreamerBotPath)/Microsoft.Web.WebView2.Wpf.dll" />
+      <!-- Uncomment to reference all dlls in the streamerbot directory -->
+      <!-- <Reference Include="$(StreamerBotPath)**/*.dll" /> -->
+   </ItemGroup>
+</Project>
